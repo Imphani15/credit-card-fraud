@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Credit Card Fraud Detection System</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<link href="{{ url_for('static',filename='img/favicon.ico')}}" rel="icon">
+	<link href="{{ url_for('static',filename='fonts/font.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/all.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/bootstrap-icons.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/animate/animate.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/style.css')}}" rel="stylesheet">
+	<!--	<link rel="stylesheet" href="{{ url_for('static',filename='css/Style-1.css')}}">-->
+
+	<script src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+		<a href="index.html" class="navbar-brand d-flex align-items-center">
+			<h2 class="m-0 text-primary" style="color: orange !important">Credit Card Fraud Detection System</h2>
+		</a>
+		<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<div class="navbar-nav ms-auto py-4 py-lg-0">
+				<a href="{{ url_for('dashboard') }}" class="nav-item nav-link">Home</a>
+				<a href="{{ url_for('uploadfile') }}" class="nav-item nav-link">Upload</a>
+				<a href="/logout" class="nav-item nav-link ">Logout</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-xxl">
+		<div class="login" style="justify-content: normal; align-items: unset; height:auto;">
+			<div class="navbar-brand align-items-center" style="border: 10px;">
+				<h2 class="m-0 text-primary" style="color: black !important; font-family: 'Roboto','sans-serif'; border-bottom-style: groove; border-top: groove; border-color: lightgray; position: relative; padding: 10px; text-transform: uppercase;"> Dataset : {{ filename }}</h2>
+			</div>
+			<br>
+
+			{% for i, exp in explanations.items() %}
+			<style>
+				#explanationChart{{ i }} {
+					width: 800px !important;
+					height: 400px !important;
+				}
+			</style>
+			<h3>Explanation for sample {{ i }}</h3>
+			<canvas id="explanationChart{{ i }}"></canvas>
+			<script>
+				var canvas = document.getElementById("explanationChart{{ i }}");
+				var chartData = {
+					labels: [{% for feature, weight in exp %}"{{ feature }}", {% endfor %}],
+					datasets: [{
+						label: "Weight",
+						backgroundColor: "rgba(255, 99, 132, 0.2)",
+						borderColor: "rgba(255, 99, 132, 1)",
+						borderWidth: 1,
+						data: [{% for feature, weight in exp %}{{ weight }}, {% endfor %}]
+					}]
+				};
+				var myChart = new Chart(canvas, {
+					type: 'horizontalBar',
+					data: chartData,
+					options: {
+						scales: {
+							xAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}]
+						}
+					}
+				});
+			</script>
+			{% endfor %}
+
+		</div>
+	</div>
+
+	<div class="container-fluid bg-dark text-secondary footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+		<div class="container" style="text-align: center;margin-top: 22px;">
+			<div>
+				<div>
+					<h2 class="text-light">Contact Us</h2>
+					<h5 style="color: white; font-weight: normal ;margin-top: 22px; font-family: sans-serif"><em>DeepsightAnalytics@gmail.com</em></h5>
+					<div style="text-align: center;margin-top: 22px;">
+						&copy; <a class="border-bottom" href="#">Credit Card Fraud Detection</a>, All Right Reserved.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{{ url_for('static',filename= 'js/jquery-3.4.1.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/wow/wow.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/easing/easing.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/waypoints/waypoints.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/counterup/counterup.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/owlcarousel/owl.carousel.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/isotope/isotope.pkgd.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/lightbox/js/lightbox.min.js')}}"></script>
+
+	<script src="{{ url_for('static',filename= 'js/main.js')}}"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/main-1.js')}}"></script>
+</body>
+
+</html>

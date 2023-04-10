@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Credit Card Fraud Detection System</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<!-- Favicon -->
+	<link href="{{ url_for('static',filename='img/favicon.ico')}}" rel="icon">
+
+	<!-- Google Web Fonts -->
+
+	<link href="{{ url_for('static',filename='fonts/font.css')}}" rel="stylesheet">
+
+	<!-- Icon Font Stylesheet -->
+	<link href="{{ url_for('static',filename='css/all.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/bootstrap-icons.css')}}" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+	<link href="{{ url_for('static',filename='lib/animate/animate.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="{{ url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+
+	<!-- Template Stylesheet -->
+	<link href="{{ url_for('static',filename='css/style.css')}}" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Spinner Start -->
+	<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+		<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+	<!-- Spinner End -->
+
+	<!-- Navbar Start -->
+	<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+		<a href="index.html" class="navbar-brand d-flex align-items-center">
+			<h2 class="m-0 text-primary">DeepSight Analytics</h2>
+		</a>
+		<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<div class="navbar-nav ms-auto py-4 py-lg-0">
+				<a href="{{ url_for('main') }}" class="nav-item nav-link">Home</a>
+				<a href="{{ url_for('about') }}" class="nav-item nav-link active">About</a>
+				<a href="{{ url_for('login_page') }}" class="nav-item nav-link">Login</a>
+				<a href="{{ url_for('register_page') }}" class="nav-item nav-link">Register</a>
+			</div>
+			<div class="h-100 d-lg-inline-flex align-items-center d-none">
+				<a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i class="fab bi bi-facebook"></i></a>
+				<a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i class="fab bi bi-twitter"></i></a>
+				<a class="btn btn-square rounded-circle bg-light text-primary me-2" href=""><i class="fab bi bi-linkedin"></i></a>
+				<a class="btn btn-square rounded-circle bg-light text-primary me-0" href=""><i class="fab bi bi-instagram"></i></a>
+			</div>
+		</div>
+	</nav>
+	<!-- Navbar End -->
+
+
+	<!-- Page Header Start -->
+	<div class="container-fluid page-header py-5 mb-5">
+		<div class="container py-5">
+			<h1 class="display-3 text-white mb-3 animated slideInDown">About Us</h1>
+			<nav aria-label="breadcrumb animated slideInDown">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a class="text-white" href="{{ url_for('main') }}">Home</a></li>
+					<li class="breadcrumb-item text-white active" aria-current="page" href="{{ url_for('about') }}">About</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+	<!-- Page Header End -->
+
+
+	<!-- Facts Start -->
+	<div class="container-xxl py-5">
+		<div class="container">
+			<div class="row g-4">
+				<div class="wow fadeIn" data-wow-delay="0.1s">
+					<div class="h-100 bg-dark p-4 p-xl-5">
+						<h4 class="text-white">Objectives</h4>
+						<hr class="w-26">
+						<span>Credit card fraud detection and prevention is the system which uses advanced algorithms and machine learning techniques to analyze data points and detect potentially fraudulent transactions. Nowadays, credit card fraud is major concern for both credit card holders and issues. By using this system, they can protect financial assets and privacy from being compromised as well as save them from financial losses. Improvement of fraud detection accuracy, speed, and efficiency. To reduce the number of false positives, while increasing the number of detected fraud cases. </span>
+						<br>
+						<br>
+						<br>
+						<h4 class="text-white">Challenges of Credit Card Fraud Detection Systems</h4>
+						<hr class="w-26">
+						<span>While credit card fraud detection systems are highly effective at preventing fraudulent transactions, there are still some challenges that need to be addressed. One of the main challenges is the sheer volume of transactions that these systems need to process. With millions of transactions occurring every day, it can be difficult to identify and flag potentially fraudulent activity in real-time. Another challenge is the constantly evolving nature of credit card fraud. As fraudsters develop new techniques and tactics, credit card fraud detection systems need to adapt and evolve in order to stay ahead of the curve. This requires ongoing investment in research and development, as well as regular updates and improvements to the algorithms and machine learning models used by these systems. </span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Facts Start -->
+
+
+	<!-- Footer Start -->
+	<div class="container-fluid bg-dark text-secondary footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+		<div class="container" style="text-align: center;margin-top: 22px;">
+			<div>
+				<div>
+					<h2 class="text-light">Contact Us</h2>
+					<h5 style="color: white; font-weight: normal ;margin-top: 22px; font-family: sans-serif"><em>DeepsightAnalytics@gmail.com</em></h5>
+					<div style="text-align: center;margin-top: 22px;">
+						&copy; <a class="border-bottom" href="#">Credit Card Fraud Detection</a>, All Right Reserved.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer End -->
+
+
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+	<!-- JavaScript Libraries -->
+	<script src="{{ url_for('static',filename= 'js/jquery-3.4.1.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/wow/wow.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/easing/easing.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/waypoints/waypoints.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/counterup/counterup.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/owlcarousel/owl.carousel.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/isotope/isotope.pkgd.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/lightbox/js/lightbox.min.js')}}"></script>
+
+	<!-- Template Javascript -->
+	<script src="{{ url_for('static',filename= 'js/main.js')}}"></script>
+</body>
+
+</html>
+
+
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Credit Card Fraud Detection System</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="" name="keywords">
+	<meta content="" name="description">
+
+	<link href="{{ url_for('static',filename='img/favicon.ico')}}" rel="icon">
+	<link href="{{ url_for('static',filename='fonts/font.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/all.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/bootstrap-icons.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/animate/animate.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="{{ url_for('static',filename='css/style.css')}}" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/Style-1.css')}}">
+
+	<style>
+		:root {
+			--primary: orange;
+			--secondary: #9B9B9B;
+			--light: #F5F5F5;
+			--dark: #161616;
+		}
+
+		.login input {
+			margin: 25px 25px;
+			padding: 20px 20px;
+
+			width: 100%
+		}
+
+		.login form {
+			height: auto !important;
+		}
+
+		.navbar-nav:hover {
+			color: orange;
+			 !important
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<!-- Spinner Start -->
+	<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+		<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+			<span class="sr-only" style="color: orange">Loading...</span>
+		</div>
+	</div>
+	<!-- Spinner End -->
+
+	<!-- Navbar Start -->
+	<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 px-4 px-lg-5">
+		<a href="index.html" class="navbar-brand d-flex align-items-center">
+			<h2 class="m-0 text-primary" style="color: orange !important">Credit Card Fraud Detection System</h2>
+		</a>
+		<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarCollapse">
+			<div class="navbar-nav ms-auto py-4 py-lg-0">
+				<a href="{{ url_for('dashboard') }}" class="nav-item nav-link ">Home</a>
+				<a href="{{ url_for('uploadfile') }}" class="nav-item nav-link active">Upload</a>
+				<a href="{{ url_for('logout') }}" class="nav-item nav-link ">Logout</a>
+			</div>
+		</div>
+	</nav>
+	<!-- Navbar End -->
+
+
+	<!-- Facts Start -->
+	<div class="container-xxl">
+		<div class="login">
+
+			<div class="container">
+				<div class="form-container sign-in-container" style="width: 100%; position: inherit !important">
+					<div class="navbar-brand align-items-center" style="border: 10px; white-space: normal !important">
+						<h2 class="m-0 text-primary" style="color: black !important; font-family: 'Roboto','sans-serif'; border-bottom-style: groove; border-top: groove; border-color: lightgray; position: relative; padding: 10px; text-transform: uppercase;">Upload Credit Card Dataset</h2>
+						<br>
+						<div>
+							{% with messages = get_flashed_messages(with_categories=true) %}
+							{% if messages %}
+							{% for category, message in messages %}
+							<div style="font-size: 1rem !important; font-weight: normal; white-space: wrap;" {% if category == 'success' %} class="alert alert-success alert-dismissible" {% elif category == 'warning' %} class="alert alert-warning alert-dismissible" {% elif category == 'danger' %} class="alert alert-danger alert-dismissible" {% else %} class="alert alert-info alert-dismissible" {% endif %} role="alert">
+								<span class="glyphicon glyphicon-asterisk"></span>
+								<button type="button" style="margin-top: 8px;" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">&times;</button>
+								{{message}}
+							</div>
+							{% endfor %}
+							{% endif %}
+							{% endwith %}
+						</div>
+
+
+					</div>
+
+					<form method="post" action='/uploadfile' enctype="multipart/form-data">
+						<!--name of signin page-->
+
+						<input id="file" placeholder="File" name="file" required type="file" value="" data-toggle="tooltip" title="Insert your file" autofocus accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+						<button style="padding: 20px 20px;width: 100%;font-size: 20px;" type="submit" value="upload">
+							Upload CSV FILE</button>
+					</form>
+					<form method="post" action='/manualdata' enctype="multipart/form-data">
+						<button style="padding: 20px 20px;width: 100%;font-size: 20px;" type="submit" value="upload">
+							Upload Manual Data</button>
+					</form>
+				</div>
+				<div class="overlay-container-log" id="log">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- Facts Start -->
+
+
+	<!-- Footer Start -->
+	<div class="container-fluid bg-dark text-secondary footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+		<div class="container" style="text-align: center;margin-top: 22px;">
+			<div>
+				<div>
+					<h2 class="text-light">Contact Us</h2>
+					<h5 style="color: white; font-weight: normal ;margin-top: 22px; font-family: sans-serif"><em>DeepsightAnalytics@gmail.com</em></h5>
+					<div style="text-align: center;margin-top: 22px;">
+						&copy; <a class="border-bottom" href="#">Credit Card Fraud Detection</a>, All Right Reserved.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer End -->
+
+
+
+
+	<!-- JavaScript Libraries -->
+	<script src="{{ url_for('static',filename= 'js/jquery-3.4.1.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'js/bootstrap.bundle.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/wow/wow.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/easing/easing.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/waypoints/waypoints.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/counterup/counterup.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/owlcarousel/owl.carousel.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/isotope/isotope.pkgd.min.js')}}"></script>
+	<script src="{{ url_for('static',filename= 'lib/lightbox/js/lightbox.min.js')}}"></script>
+
+	<!-- Template Javascript -->
+	<script src="{{ url_for('static',filename= 'js/main.js')}}"></script>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{{ url_for('static',filename='js/main-1.js')}}"></script>
+</body>
+
+</html>
